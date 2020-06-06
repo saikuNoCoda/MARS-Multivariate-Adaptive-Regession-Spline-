@@ -1,4 +1,4 @@
-#How to use - 
+# How to use - 
 
 ```
 1) Download Python3 and pip3
@@ -14,12 +14,11 @@
 4) python3 application.py in terminal
 Note use pip instead of pip3 and python instead of python3 if default python version is python3 in your linux
 
+```
+
 Output GUI - 
 ![Image1](https://raw.githubusercontent.com/failedcoder12/MARS-Multivariate-Adaptive-Regession-Spline-/master/Screenshot%20from%202020-06-06%2017-57-32.png?token=AGL2QZ4Y7DXXRSU3JRPUHGS64TKGA)
 ![Image2](https://raw.githubusercontent.com/failedcoder12/MARS-Multivariate-Adaptive-Regession-Spline-/master/Screenshot%20from%202020-06-06%2017-57-49.png?token=AGL2QZ4PPAJSFKZDJKN7D5C64TKGA)
-
-
-```
 
 
 
