@@ -1,3 +1,24 @@
+#How to use - 
+
+```
+1) Download Python3 and pip3
+2) Open Terminal
+3) Run following commands
+    a) sudo apt-get install python3-tk
+    b) sudo pip3 install numpy
+    c) sudo pip3 install mlxtend
+    d) sudo pip3 install matplotlib
+    e) sudo pip3 install scikit-learn
+    f) sudo pip3 install sklearn-contrib-py-earth
+    g) sudo pip3 install Pillow==2.2.1
+Note use pip instead of pip3 if default python version is python3 in your linux
+4) python3 application.py in terminal
+
+
+```
+
+
+
 # Multiple Adaptive Regression Splines (MARS)
 
 ```
@@ -28,10 +49,6 @@ order derivatives) where polynomial pieces connect
 regression (​https://en.wikipedia.org/wiki/Linear_regression​), logistic regression
 (​https://en.wikipedia.org/wiki/Logistic_regression​) etc.
 
-```
-Fig - 1 Image showing a comparison between Linear Regression and Multivariate Adaptive Regression Spline
-```
-
 They are really fast and simple algorithms and many of such linear models can be
 easily adapted to non linear patterns in the data by adding non-linear terms (like
 higher order polynomials, interaction effects or any other transformation techniques
@@ -55,61 +72,16 @@ and automatically performs features selection.
 **Linear Regression** ​is the most basic regression model. Simple linear regression
 (SLR) assumes that statistical relationship between two continuous variables (let us
 say X and Y) is linear and can be defined using a simple equation:
-
-_Y_ (^) _i_ = β 0 + β 1 _X_ (^) _i_ + ε (^) _i for i_ = 1 , 2 , 3 ,....., _n_ , (1)
-Where Y​i ​ represents the i-th prediction or value or X​i​ feature value and β 0 and β (^1)
-are fixed but unknown constant and ε (^) _i_ represent noise or error. So, a simple linear
-regression model work is to estimate values of β 0 and β 1 such that (1)’s value will
-have least loss or error sum on a test dataset or real life values. Cost or error sum
-can be defined in various ways one of the easy and most used formulas to calculate
-loss in linear regression is Residual sum of squares.
-_Let Ypred_ (^) _i be the predicted value from SLR given by_ −
-_Ypred_ (^) _i_ = β 0 + β 1 _X_ (^) _i for i_ = 1 , 2 , 3 ,....., _n_ ,
-_and true value given by Ytrue_ (^) _i and the Loss function is given by_ −
-_LOSS_ ( β 0 , β 1 ) = ∑[ _Ytrue Ypred_ ]
-_n
-i_ = 1 _i_
-− (^) _i_^2
-
-
-So, what linear regression does is that is find appropriate values of β 0 and β 1 to get
-minimum loss over the given data points. Such models can be easily extended for
-multidimensional data points.
-
-```
-Fig - 2 Images showing output of linear regression on two different datasets
-```
-Problem with Logistic Regression - If you see fig - 2, when linear regression
-regression is applied on a dataset which is not linear (Fig - 2(b)), It under fits the
-datasets, so doesn’t provide a good generalization of the dataset. Such predictions
-will have little or no use on non-linear distribution of data points. As discussed above
-there are many regression techniques like polynomial regression which can
-overcome and can fit over such distribution but for such regressions required
-pre-knowledge of such data points and give explicit parameters. But MARS doesn’t
-require such explicit parameter initialization or pre-analysis of the dataset. It itself
-tries various configurations and tries to fit over the distribution.
-
-```
-Fig - 3 Image shows fitting of a stepwise model over a non-linear distribution of data points
-```
-
-MARS uses piecewise linear basis functions of the form(given by an equation below)
-
-_y_ (^) _i_ =β 0 +β 1 _C_ 1 ( _xi_ ) +β 2 _C_ 2 ( _xi_ )+β 3 _C_ 3 ( _xi_ )+....+β (^) _dC_ (^) _d_ ( _xi_ ) + ε (^) _i_ (2)
-Where _C_ (^) _d_ ( _xi_ )represents _xi_ values ranging from _c_ (^) _d_ − 1 ≤ _xi_ < _c_ (^) _d_.
-Fig - 3 shows an illustration of such stepwise linear basis function
 **Multivariate adaptive regression splines (MARS)** ​is an easy and simple approach
 to capture the non-linear relationships in the data by setting the values of
 knots(cutpoints) similar to step functions also known as hinge functions. The
 procedure assesses each data point for each predictor as a knot and creates a linear
 regression model with the candidate feature(s).
-_Fig - 4 Image showing fitted regression splines of one (A), two (B), three (C) and four (D) knots_
+
 **Example/Overview of working of algorithm -**
 Consider a non-linear, non-monotonic dataset where _Y_ = _f_ ( _X_ ).
 I. Look for the single point across the range of X values where 2 different linear
 relationships between Y and X achieve smallest error or loss.
-
-
 II. The result of such finding is known as hinge which is given by _h_ ( _x_ − _a_ ) where
 _a_ is the cut-point value.
 As shown in Fig - 4(A) our hinge function is _h_ ( _x_ − 1. 18 )such that out two linear model
@@ -126,25 +98,6 @@ good non-linear prediction equation.
 
 **Generalization**
 
-MARS model generalizes to ⇒ _f_ ( _X_ ) =β 0 + ∑ _f_ ( _X_ ) (3)
-
-```
-M
-m = 1
-```
-```
-β m m
-```
-Where _f_ (^) _m_ ( _X_ ) is a basis function which is the product of two or more such hinge
-functions.
-**Basis function -** ​Each basis function takes one of the three form
-● A constant term
-● A hinge function which has a form max(0,x-constant) or max(0,constant-x)
-● A product of two or more hinge functions
-β (^) _i_ ′ _s_ for i = 0,1,2...,m are the coefficients of hinge functions estimated by minimizing
-the loss or error function (like defined in (1) above) and these coefficient can be
-defined as the weights that represent the importance of the variable in the MARS
-model to fit over a non-linear distribution of data-points.
 **MARS Model Building Procedure**
 
 1. Gather data i.e. x input variables or data-points from the dataset with y output
@@ -197,23 +150,6 @@ loss that will be there by removing one hinge function or a set of that.
 
 There is nothing wrong in having a lot of hinge functions but a model that fits to noise
 in the dataset can give poor results on real world data.
-
-Formula of GCV =
-
-( ∑[ _Ytrue Ypred_ ] ) / ( _N_ 1 _effective number of parameters_ )/ _N_ ) )
-
-```
-n
-i = 1 i
-```
-− (^) _i_^2 *( −(^2
-
-
-The effective number of parameters is defined in MARS context as
-( _effective number of parameters_ ) =( _number of mars terms_ ) +( _penalty_ )*
-(( _number of mars terms_ )− 1 )/ 2
-Where penalty can be set to 2 or 3 by the analyst or programmer.
-
 **Assumptions**
 No assumptions are made about the environment or distribution of data-points. The
 only requirement for the MARS model to perform well is that variables should not be
@@ -234,109 +170,6 @@ highly correlated to one another as this can lead to difficulty in estimation.
 **Output of MARS on a dataset**
 Given dataset can be downloaded from this link (​Dataset​). When plotted the dataset
 distribution looks like this
-
-```
-Fig - 6 Image showing Dataset distribution
-```
-Now when the MARS model is trained on this dataset with different parameters such
-as max_degree(i.e. Maximum degree of x in the equation (3)) and max_terms ( i.e.
-Maximum number of allowed hinge functions), we can get different outputs and
-those outputs were plotted and examined.
-
-
-_Fig - 7 Image shows 4 different output of MARS model with max_degree = 1 and different values of knots allowed_
-
-_Fig - 8 Image shows 4 different output of MARS model with max_degree = 2 and different values of knots allowed_
-
-
-_Fig - 9 Image shows 4 different output of MARS model with max_degree = 4 and different values of knots allowed_
-
-From Fig - 7,8,9 we can examine that increasing the number of knots helps in better
-fitting of data distribution and increasing degree brings smoothness in the model’s
-prediction (i.e. helps in fitting curves in the data distribution). By comparing all the
-models above (Fig 7,8,9) it can be found that the model with knots = 10 and degree
-= 4 fits the dataset best.
-
-```
-Fig - 10 Image showing final MARS model output for dataset with max_degree = 3 and knots(max_terms) = 4
-```
-
-**MARS with Logistic Regression**
-Mars Model can be used with logistic regression to compute non-linear boundaries.
-Here are the examples on three different types of dataset.
-
-**Steps -**
-1) Get a nonlinear equation output from the MARS model.
-2) Apply logistic regression for decision boundaries.
-
-_Example 1 - (Simplified Iris dataset (petal length and sepal length)_
-
-_Fig - 11 Showing output of MARS model Fig - 12 showing output of logistic regression
-On equation given by MARS model_
-
-_Example 2 - (make-moons dataset)_
-
-_Fig - 13 Showing output of MARS model Fig - 14 showing output of logistic regression
-On equation given by MARS model_
-
-
-**Implementation (Python)**
-
-```
-● MARS model is present in python pyearth library under name ​ EARTH. ​It can
-be imported using this piece of code. Pyearth library can be downloaded from
-this link - ​https://pypi.org/project/sklearn-contrib-py-earth/​ and to learn more
-about this library - ​https://contrib.scikit-learn.org/py-earth/
-```
-```
-● To test and train with different parameters, we can define different knots
-(hinge functions) -
-```
-```
-● Creating a simple MARS model using pyearth library with parameters such as
-max_terms(i.e. Maximum allowed different hinge functions), max_degree(i.e.
-Highest degree of polynomial function allowed) and verbose(which when set
-to 1 gives complete detail how our model learns different beta’s (β′ s )).
-```
-```
-● Now to train or fit ours MARS model, we just need to write 1 function
-```
-```
-● To know the parameters that MARS model learns while training on a dataset
-use model.summary() function.
-● To trace pruning of different functions use model.trace().
-```
-
-```
-● Complete code can be found here on the Google Colab Link -
-https://colab.research.google.com/drive/1G-QeE9Fcr2qOaWimspiMTQdK
-fUrHyktd?usp=sharing
-```
-_Fig - 15 Image showing sample output of model.summary() and model.trace() functions._
-
-**Demo -**
-
-A demo of MARS created using which can be downloaded from here - ​Link​. It is
-created in python using Tkinter GUI library. To download and play with it a ReadMe
-file has been attached in the github repo.
-
-
-**Here are some screenshots from demo.........**
-
-```
-Fig -16 Two Images showing GUI and working of Demo created using Python Tkinter library.
-```
-**Comparison With Other Non linear classifiers -**
-
-```
-Fig - 14 Showing output of various model on a given XOR dataset
-```
-
-```
-From Fig - 14 it can be seen that Logistic Regression with MARS clearly
-outperformed Simple Logistic Regression and Random forest and produces
-equivalent good results as SVM (yet MARS is a simple model than SVM)
-```
 **Research Implementation Related Papers -**
 
 1. C. Briand and Bernd Freimut (2004). “Using multiple adaptive regression
