@@ -11,8 +11,12 @@
     e) sudo pip3 install scikit-learn
     f) sudo pip3 install sklearn-contrib-py-earth
     g) sudo pip3 install Pillow==2.2.1
-Note use pip instead of pip3 if default python version is python3 in your linux
 4) python3 application.py in terminal
+Note use pip instead of pip3 and python instead of python3 if default python version is python3 in your linux
+
+Output GUI - 
+![Image1](https://raw.githubusercontent.com/failedcoder12/MARS-Multivariate-Adaptive-Regession-Spline-/master/Screenshot%20from%202020-06-06%2017-57-32.png?token=AGL2QZ4Y7DXXRSU3JRPUHGS64TKGA)
+![Image2](https://raw.githubusercontent.com/failedcoder12/MARS-Multivariate-Adaptive-Regession-Spline-/master/Screenshot%20from%202020-06-06%2017-57-49.png?token=AGL2QZ4PPAJSFKZDJKN7D5C64TKGA)
 
 
 ```
@@ -24,9 +28,7 @@ Note use pip instead of pip3 if default python version is python3 in your linux
 ```
 By - Divyansh Verma
 Subject - Machine Intelligence (MI)
-Roll no. - 16CO
 Email - ​ divyanshverma12@gmail.com
-Mobile - +91-
 ```
 **Definition** ​ - Multivariate/Multiple Adaptive Regression Splines (MARS) is a form of
 regression analysis which was introduced by Jerome H. Friedman in 1991. It is a
